@@ -1,7 +1,6 @@
 import React, {useState, useEffect, useRef, useCallback} from 'react';
 import {Typography, Grid} from '@material-ui/core';
 import StoryCard from '../storyCard/StoryCard';
-import Description from '../header/Description';
 import useStyles from './styles';
 import axios from 'axios'; 
 

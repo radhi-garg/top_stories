@@ -44,11 +44,9 @@ export default function StoryCard(props) {
         <Typography style={{color:'#1b91ff', marginTop:'15px', width:'100%'}} variant='subtitle2'>
          {props.displayName}
         </Typography>
-        {/* <div style={{display: 'block'}}> */}
         <Typography variant='caption'>
         {props.readTime}
         </Typography>
-        {/* </div> */}
         </Grid>
         </CardContent>
     </Card>
