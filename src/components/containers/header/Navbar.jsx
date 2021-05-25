@@ -8,18 +8,19 @@ import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
 import SearchIcon from '@material-ui/icons/Search';
 import MenuIcon from '@material-ui/icons/Menu';
+import { NAV_ITEMS } from '../../../constants/constants';
+import {useHistory} from 'react-router-dom'
 
 function Navbar(props) {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
-  const navArray = [
-    'TRENDING',
-    'VIDEOS',
-    'STORIES',
-    'QUIZZES',
-    'MEMES',
-    'SPOTLIGHT',
-  ];
+  const [value, setValue] = React.useState('');
+  const history = useHistory();
+
+  const handleChange = (event, newValue) => {
+    console.log('newValue',newValue)
+    history.push(`/${newValue}`);
+    setValue(newValue);
+  };
 
   return (
     <div>
@@ -48,21 +49,20 @@ function Navbar(props) {
             <Grid item xl={5} lg={5} md={5}>
               <BottomNavigation
                 value={value}
-                onChange={(event, newValue) => {
-                  setValue(newValue);
-                }}
+                onChange={handleChange}
                 showLabels
                 style={{ background: 'transparent' }}
               >
-                {navArray.map((element, index) => {
+                {NAV_ITEMS.map((element, index) => {
                   return (
                     <BottomNavigationAction
                       key={`${element}${index}`}
+                      value={element}
                       label={
                         <Typography
                           style={{ color: '#1b91ff', fontSize: '14px' }}
                         >
-                          {element}
+                          {element.toUpperCase()}
                         </Typography>
                       }
                     />
