@@ -42,7 +42,7 @@ function Stories() {
   const getPosts = async (offset, limit) =>{
    const result = await axios({
       method: 'get',
-      url: `https://www.scoopwhoop.com/api/v4/read/all/?offset=${offset}&limit=${limit}`,
+      url: process.env.REACT_APP_API_URL,
       responseType: 'json'
     }).catch(error => {
       setError(error);
