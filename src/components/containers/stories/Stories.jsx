@@ -42,16 +42,21 @@ function Stories() {
   const getPosts = async (offset, limit) =>{
    const result = await axios({
       method: 'get',
-      url: process.env.REACT_APP_API_URL,
+      url: `https://www.scoopwhoop.com/api/v4/read/all/?offset=${offset}&limit=${limit}`,
       responseType: 'json'
     }).catch(error => {
       setError(error);
     });
     
+    if(!result){
+      setLoading(false);
+      return
+    } 
+
     setStories((prevStories => {
-      return [...prevStories, ...result.data.data]
+      return [...prevStories, ...result.data?.data]
     }));
-    setHasMore(result.data.data.length > 0);
+    setHasMore(result.data?.data.length > 0);
     setLoading(false);
   };
 
